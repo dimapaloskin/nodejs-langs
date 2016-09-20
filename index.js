@@ -5,7 +5,8 @@ var langs = {
     has:   hasLanguage,
     codes: getCodes,
     names: getNames,
-    where: findBy
+    where: findBy,
+    findAll: findAll
 };
 
 module.exports = langs;
@@ -59,4 +60,19 @@ function forAll(arr, fn) {
 function isValidType(type) {
     var types = [1, 2, 3, '1', '2', '2B', '2T', '3'];
     return -1 !== types.indexOf(type);
+}
+
+function findAll(val) {
+    var result;
+    for (var i = 0; i < data.length; i++) {
+      if (result) return result;
+      var row = data[i];
+      for (key in row) {
+        if (row[key] === val) {
+          result = row;
+        }
+      }
+    }
+
+    return result;
 }
